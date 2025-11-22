@@ -1,9 +1,143 @@
-<header class="max-w-4xl mx-auto mt-6 mb-16">
-  <nav class="flex justify-between">
-    <a
-      href="/"
-      class="text-2xl font-bold hover:underline hover:underline-offset-4 hover:decoration-green-500"
-      ><span class="text-green-500">&#10022;</span> Astro Supabase Starter
-    </a>
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: '首页', icon: '🏠' },
+  { href: '/about', label: '关于我', icon: '👤' },
+  { href: '/awards', label: '荣誉奖项', icon: '🏆' },
+  { href: '/poems', label: '诗歌作品', icon: '📝' },
+  { href: '/academic', label: '学业成绩', icon: '📊' },
+  { href: '/projects', label: '作品展示', icon: '💻' }
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-opacity-80" style="background: rgba(10, 14, 39, 0.85);">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3 group">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-2xl font-bold shadow-lg group-hover:shadow-cyan-500/50 transition-all duration-300">
+          王
+        </div>
+        <div class="hidden md:block">
+          <h1 class="text-xl font-bold gradient-text">王一然</h1>
+          <p class="text-xs text-cyan-400">Wang Yiran</p>
+        </div>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <ul class="hidden lg:flex items-center space-x-1">
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.href}
+              class={`
+                px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2
+                ${currentPath === item.href 
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50' 
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }
+              `}
+            >
+              <span class="text-lg">{item.icon}</span>
+              <span class="font-medium">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div 
+      id="mobile-menu"
+      class="lg:hidden hidden mt-4 pb-4"
+    >
+      <ul class="space-y-2">
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.href}
+              class={`
+                flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300
+                ${currentPath === item.href 
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' 
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }
+              `}
+            >
+              <span class="text-xl">{item.icon}</span>
+              <span class="font-medium">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </nav>
 </header>
+
+<!-- 占位符，防止内容被固定头部遮挡 -->
+<div class="h-20"></div>
+
+<script>
+  // 移动端菜单切换
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // 滚动时添加阴影效果
+  let lastScroll = 0;
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (header) {
+      if (currentScroll > 50) {
+        header.style.boxShadow = '0 4px 30px rgba(0, 212, 255, 0.1)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    }
+    
+    lastScroll = currentScroll;
+  });
+</script>
+
+<style>
+  /* 导航项悬浮效果 */
+  nav a {
+    position: relative;
+  }
+  
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #00ff88);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover::after {
+    width: 80%;
+  }
+</style>

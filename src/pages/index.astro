@@ -1,71 +1,362 @@
 ---
-import { getEntry } from "astro:content";
-import Alert from "../components/Alert.astro";
-import Guide from "../components/Guide.astro";
-import Layout from "../components/Layout.astro";
-import TableRow from "../components/TableRow.astro";
-import { supabase } from "../utils/database";
-
-export const prerender = false;
-
-let frameworks;
-let frameworksError;
-
-// Fetch frameworks data from Supabase if connection is set up
-if (supabase) {
-  const { data, error } = await supabase
-    .from("frameworks")
-    .select("*")
-    .order("likes", { ascending: false });
-  frameworks = data;
-  frameworksError = error;
-}
-
-// Get guides
-const connectGuide = await getEntry("guides", "guide-connect-supabase");
-const fetchDataGuide = await getEntry("guides", "guide-fetch-data");
+import Layout from '../components/Layout.astro';
 ---
 
-<Layout title="Web Frameworks">
-  {
-    supabase ? (
-      frameworks ? (
-        <>
-          <h1 class="mb-8 text-4xl font-bold">
-            Vote for Your Favorite Web Framework
-          </h1>
-          <table class="w-full text-left">
-            <thead>
-              <tr class="font-mono text-base border-t border-b">
-                <th>Name</th>
-                <th>Logo</th>
-                <th>Likes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {frameworks?.map((framework) => (
-                <TableRow framework={framework} />
-              ))}
-            </tbody>
-          </table>
-        </>
-      ) : (
-        <>
-          {frameworksError && (
-            <Alert
-              title={frameworksError.code}
-              text={frameworksError.message}
-              variant="error"
-            />
-          )}
-          {fetchDataGuide && <Guide guide={fetchDataGuide} />}
-        </>
-      )
-    ) : (
-      <>
-        <Alert title="Finish setting up your new site" text="Before your website is ready, you must complete the steps from the guide below to create, populate, and connect your Supabase database."/>
-        {connectGuide && <Guide guide={connectGuide} />}
-      </>
-    )
-  }
+<Layout title="王一然 - 首页 | 永泰小学学生个人网站">
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <div class="container mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- 左侧文字内容 -->
+        <div class="space-y-8 slide-in-left">
+          <div class="space-y-4">
+            <h2 class="text-2xl md:text-3xl text-cyan-400 font-medium">你好，我是</h2>
+            <h1 class="text-5xl md:text-7xl font-bold neon-text leading-tight">
+              王一然
+            </h1>
+            <h3 class="text-2xl md:text-3xl gradient-text font-semibold">
+              Wang Yiran
+            </h3>
+          </div>
+          
+          <div class="space-y-3 text-gray-300 text-lg">
+            <p class="flex items-center space-x-2">
+              <span class="text-cyan-400">🏫</span>
+              <span>永泰小学（十一集团校）五年级四班</span>
+            </p>
+            <p class="flex items-center space-x-2">
+              <span class="text-cyan-400">🎖️</span>
+              <span>班级旗手 | 研究小达人 | 文明之星</span>
+            </p>
+            <p class="flex items-center space-x-2">
+              <span class="text-cyan-400">🏆</span>
+              <span>叶圣陶杯作文大赛全国一等奖获得者</span>
+            </p>
+            <p class="flex items-center space-x-2">
+              <span class="text-cyan-400">📝</span>
+              <span>四年创作63篇诗歌作品</span>
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap gap-4 pt-4">
+            <a href="/about" class="tech-button">
+              <span class="relative z-10">了解更多</span>
+            </a>
+            <a href="/awards" class="tech-button" style="background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);">
+              <span class="relative z-10">查看荣誉</span>
+            </a>
+            <a href="https://lako.top" target="_blank" rel="noopener noreferrer" class="tech-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <span class="relative z-10">我的游戏作品</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 右侧装饰性内容 -->
+        <div class="relative slide-in-right">
+          <div class="relative w-full max-w-md mx-auto">
+            <!-- 3D旋转的装饰圆环 -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-80 h-80 border-4 border-cyan-500/30 rounded-full animate-spin-slow"></div>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-64 h-64 border-4 border-green-500/30 rounded-full animate-spin-reverse"></div>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-96 h-96 border-2 border-purple-500/20 rounded-full animate-pulse"></div>
+            </div>
+            
+            <!-- 中心发光球 -->
+            <div class="relative z-10 w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-2xl float" style="box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);">
+              <div class="text-6xl font-bold text-white">王</div>
+            </div>
+            
+            <!-- 浮动标签 -->
+            <div class="absolute top-10 -left-10 tech-card p-4 float" style="animation-delay: 0.5s;">
+              <div class="flex items-center space-x-2">
+                <span class="text-2xl">✍️</span>
+                <div>
+                  <p class="text-xs text-gray-400">作文比赛</p>
+                  <p class="font-bold text-cyan-400">全国一等奖</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="absolute top-40 -right-10 tech-card p-4 float" style="animation-delay: 1s;">
+              <div class="flex items-center space-x-2">
+                <span class="text-2xl">🤖</span>
+                <div>
+                  <p class="text-xs text-gray-400">AI挑战赛</p>
+                  <p class="font-bold text-green-400">全国铜奖</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 tech-card p-4 float" style="animation-delay: 1.5s;">
+              <div class="flex items-center space-x-2">
+                <span class="text-2xl">🥈</span>
+                <div>
+                  <p class="text-xs text-gray-400">武术比赛</p>
+                  <p class="font-bold text-purple-400">全国第二名</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 核心亮点展示 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">核心亮点</h2>
+        <p class="text-gray-400 text-lg">我的成长与成就</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 人文素养 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📚</div>
+          <h3 class="text-2xl font-bold text-cyan-400 mb-3">人文素养</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            连续获得叶圣陶杯作文大赛全国一等奖，四年间创作63篇诗歌作品，展现出扎实的文学功底。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">作文一等奖</span>
+            <span class="tech-tag">63篇诗歌</span>
+            <span class="tech-tag">朗读之星</span>
+          </div>
+        </div>
+        
+        <!-- 科学探索 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🔬</div>
+          <h3 class="text-2xl font-bold text-green-400 mb-3">科学探索</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            获得全国青少年人工智能挑战赛铜奖，使用AI技术开发游戏，展现创新能力。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">AI铜奖</span>
+            <span class="tech-tag">游戏开发</span>
+            <span class="tech-tag">研究小达人</span>
+          </div>
+        </div>
+        
+        <!-- 体育健康 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🏃</div>
+          <h3 class="text-2xl font-bold text-purple-400 mb-3">体育健康</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            全国少儿拳击赛第二名，体质健康标准104.3分优秀等级，身心健康发展。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">全国第二</span>
+            <span class="tech-tag">最佳运动员</span>
+            <span class="tech-tag">体质优秀</span>
+          </div>
+        </div>
+        
+        <!-- 学业成绩 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">学业成绩</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            语文96、数学98、英语97，全科优秀，班级排名第2，全面发展。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">全科优秀</span>
+            <span class="tech-tag">班级第二</span>
+            <span class="tech-tag">全面发展</span>
+          </div>
+        </div>
+        
+        <!-- 综合实践 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🎯</div>
+          <h3 class="text-2xl font-bold text-red-400 mb-3">综合实践</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            担任班级旗手，获得文明之星称号，积极参与各类社会实践活动。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">班级旗手</span>
+            <span class="tech-tag">文明之星</span>
+            <span class="tech-tag">社会实践</span>
+          </div>
+        </div>
+        
+        <!-- 技术创作 -->
+        <div class="tech-card group cursor-pointer">
+          <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">💻</div>
+          <h3 class="text-2xl font-bold text-blue-400 mb-3">技术创作</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            基于AI编程开发植物大战僵尸网页版游戏，展现技术学习能力。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">AI编程</span>
+            <span class="tech-tag">游戏开发</span>
+            <span class="tech-tag">创新实践</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 统计数据展示 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="tech-card">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-5xl md:text-6xl font-bold gradient-text mb-2" data-count="15">0+</div>
+            <p class="text-gray-400">获奖总数</p>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl md:text-6xl font-bold gradient-text mb-2" data-count="63">0</div>
+            <p class="text-gray-400">诗歌作品</p>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl md:text-6xl font-bold gradient-text mb-2">98</div>
+            <p class="text-gray-400">最高分数</p>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl md:text-6xl font-bold gradient-text mb-2">104.3</div>
+            <p class="text-gray-400">体质分数</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 作品展示预览 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">我的作品</h2>
+        <p class="text-gray-400 text-lg">基于AI技术开发的创新作品</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 游戏作品 -->
+        <div class="tech-card group cursor-pointer hover:scale-105 transition-transform">
+          <div class="relative overflow-hidden rounded-lg mb-6">
+            <div class="aspect-video bg-gradient-to-br from-green-500/20 to-yellow-500/20 flex items-center justify-center">
+              <div class="text-center space-y-4">
+                <div class="text-6xl">🌻</div>
+                <p class="text-2xl font-bold text-green-400">植物大战僵尸</p>
+                <p class="text-gray-400">网页版游戏</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">植物大战僵尸网页版</h3>
+          <p class="text-gray-300 mb-4">
+            使用AI编程技术开发的网页版植物大战僵尸游戏，展现技术学习与创新能力。
+          </p>
+          <a href="https://lako.top" target="_blank" rel="noopener noreferrer" class="tech-button inline-block">
+            <span class="relative z-10">访问游戏 →</span>
+          </a>
+        </div>
+        
+        <!-- 个人网站 -->
+        <div class="tech-card group cursor-pointer hover:scale-105 transition-transform">
+          <div class="relative overflow-hidden rounded-lg mb-6">
+            <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+              <div class="text-center space-y-4">
+                <div class="text-6xl">🌐</div>
+                <p class="text-2xl font-bold text-cyan-400">个人网站</p>
+                <p class="text-gray-400">Astro + Netlify</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">个人展示网站</h3>
+          <p class="text-gray-300 mb-4">
+            基于现代Web技术栈开发的个人网站，展示个人信息、作品与成就。
+          </p>
+          <a href="/projects" class="tech-button inline-block">
+            <span class="relative z-10">查看详情 →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA区域 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="tech-card text-center space-y-6" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));">
+        <h2 class="text-3xl md:text-4xl font-bold gradient-text">了解更多关于我</h2>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+          查看我的详细简历、荣誉奖项、诗歌作品和学业成绩，了解我的成长历程。
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="/about" class="tech-button">
+            <span class="relative z-10">个人简历</span>
+          </a>
+          <a href="/awards" class="tech-button" style="background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);">
+            <span class="relative z-10">荣誉奖项</span>
+          </a>
+          <a href="/poems" class="tech-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <span class="relative z-10">诗歌作品</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  @keyframes animate-spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: animate-spin-slow 20s linear infinite;
+  }
+  
+  .animate-spin-reverse {
+    animation: animate-spin-reverse 15s linear infinite;
+  }
+</style>
+
+<script>
+  // 数字计数动画
+  function animateCount(element: HTMLElement, target: number, duration: number = 2000) {
+    let current = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.floor(current) + (element.dataset.count?.includes('+') ? '+' : '');
+    }, 16);
+  }
+  
+  // 观察数字元素
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = parseInt(entry.target.dataset.count || '0');
+        animateCount(entry.target as HTMLElement, target);
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  
+  document.querySelectorAll('[data-count]').forEach(el => observer.observe(el));
+</script>

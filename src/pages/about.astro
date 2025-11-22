@@ -1,0 +1,311 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="关于我 - 王一然 | 个人简历">
+  <!-- 页面标题 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 fade-in">
+        <h1 class="text-5xl md:text-6xl font-bold gradient-text mb-4">关于我</h1>
+        <p class="text-gray-400 text-lg">About Me</p>
+        <div class="tech-divider max-w-md mx-auto mt-8"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 个人信息卡片 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="tech-card mb-12">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- 左侧头像区域 -->
+            <div class="flex flex-col items-center justify-center space-y-6">
+              <div class="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-2xl float" style="box-shadow: 0 0 60px rgba(0, 212, 255, 0.5);">
+                <div class="text-7xl font-bold text-white">王</div>
+              </div>
+              <div class="text-center">
+                <h2 class="text-3xl font-bold neon-text mb-2">王一然</h2>
+                <p class="text-xl text-cyan-400">Wang Yiran</p>
+              </div>
+            </div>
+            
+            <!-- 右侧基本信息 -->
+            <div class="space-y-4">
+              <h3 class="text-2xl font-bold text-cyan-400 mb-6">基本信息</h3>
+              <div class="space-y-3 text-gray-300">
+                <div class="flex items-start space-x-3">
+                  <span class="text-cyan-400 text-xl">👤</span>
+                  <div>
+                    <p class="text-sm text-gray-400">姓名</p>
+                    <p class="font-medium">王一然</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-cyan-400 text-xl">⚧️</span>
+                  <div>
+                    <p class="text-sm text-gray-400">性别 / 民族</p>
+                    <p class="font-medium">男 / 汉族</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-cyan-400 text-xl">🏫</span>
+                  <div>
+                    <p class="text-sm text-gray-400">学校</p>
+                    <p class="font-medium">永泰小学（十一集团校）</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-cyan-400 text-xl">📚</span>
+                  <div>
+                    <p class="text-sm text-gray-400">班级</p>
+                    <p class="font-medium">五年级四班</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="text-cyan-400 text-xl">🎖️</span>
+                  <div>
+                    <p class="text-sm text-gray-400">社会工作</p>
+                    <p class="font-medium">班级旗手</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 家庭背景 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold gradient-text mb-8 text-center">家庭背景</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 父亲信息 -->
+          <div class="tech-card">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center text-2xl">
+                👨
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-cyan-400">父亲</h3>
+                <p class="text-gray-400">王启源</p>
+              </div>
+            </div>
+            <div class="pl-20">
+              <p class="text-gray-300 flex items-center space-x-2">
+                <span class="text-cyan-400">💼</span>
+                <span>北京信息科技大学</span>
+              </p>
+              <p class="text-gray-300 flex items-center space-x-2">
+                <span class="text-cyan-400">👔</span>
+                <span>计算机学院教师</span>
+              </p>
+            </div>
+          </div>
+          
+          <!-- 母亲信息 -->
+          <div class="tech-card">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-2xl">
+                👩
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-purple-400">母亲</h3>
+                <p class="text-gray-400">赵彩萍</p>
+              </div>
+            </div>
+            <div class="pl-20">
+              <p class="text-gray-300 flex items-center space-x-2">
+                <span class="text-purple-400">💼</span>
+                <span>国家电网国电南瑞集团</span>
+              </p>
+              <p class="text-gray-300 flex items-center space-x-2">
+                <span class="text-purple-400">👔</span>
+                <span>职工</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 自荐理由 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold gradient-text mb-8 text-center">自荐理由</h2>
+        <div class="space-y-6">
+          <!-- 理由1 -->
+          <div class="tech-card hover:scale-105 transition-transform">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                1
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-cyan-400 mb-3 flex items-center space-x-2">
+                  <span>📚</span>
+                  <span>人文素养与科技发展</span>
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  获得作文比赛一等奖，说明我有较好的人文素养能力，同时，我也知道学习的重要性，我还自主用AI开发了游戏，说明我能适应科技发展。四年积累了<strong class="text-cyan-400">63篇诗歌习作</strong>，我课堂上积极回答问题，公开课上积极回答问题，不断培养和积累人文素养。
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 理由2 -->
+          <div class="tech-card hover:scale-105 transition-transform">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                2
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-green-400 mb-3 flex items-center space-x-2">
+                  <span>❤️</span>
+                  <span>爱国爱民与价值观</span>
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  我<strong class="text-green-400">爱祖国、爱人民，爱劳动</strong>，喜爱科学，也努力践行社会主义价值观。
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 理由3 -->
+          <div class="tech-card hover:scale-105 transition-transform">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                3
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-purple-400 mb-3 flex items-center space-x-2">
+                  <span>🔬</span>
+                  <span>科学精神</span>
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  我崇尚真理，从不倔强，有着<strong class="text-purple-400">不畏困难的精神</strong>，有科学精神。
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 理由4 -->
+          <div class="tech-card hover:scale-105 transition-transform">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                4
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-yellow-400 mb-3 flex items-center space-x-2">
+                  <span>🤖</span>
+                  <span>实践能力与创新精神</span>
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  我崇尚唯物主义，并能用科学去认识事物。从我曾得到<strong class="text-yellow-400">机器人大赛的全国铜奖</strong>说明我有很强的实践能力和科学精神，且我善于发现问题。
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 理由5 -->
+          <div class="tech-card hover:scale-105 transition-transform">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-rose-500 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                5
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-red-400 mb-3 flex items-center space-x-2">
+                  <span>💪</span>
+                  <span>身心健康与理想</span>
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  我当前从事着篮球运动，曾经经过数月艰苦训练，付出多少次汗水和眼泪才获得<strong class="text-red-400">全国青少年拳击赛的第二名</strong>，说明我的身心很健康。我具有很强的安全意识与保护能力，我的理想是通过好好学习，将来更好为大家服务，让大家<strong class="text-red-400">更健康，更省力，更快乐</strong>。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 自荐信 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold gradient-text mb-8 text-center">自荐信</h2>
+        <div class="tech-card" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 255, 136, 0.05));">
+          <div class="space-y-6 text-gray-300 leading-relaxed text-lg">
+            <p class="text-justify indent-8">
+              大家好，我是王一然，我很希望能收获您手中小小的票。这虽对你是举手之劳，却对我非常重要。如果你能送出您手中小小的票，我极为感谢。如果不行的话也没事，毕竟大家都要选自己喜欢的人选。
+            </p>
+            <p class="text-justify indent-8">
+              我曾在2025年1月获得了<strong class="text-cyan-400">叶圣陶杯的全国一等奖</strong>，虽然我与完美差距巨大，可我也想试试，至少我努力过。就像我从22年起参加了一共6次叶圣陶的作文比赛，一共参加了数次线下的作文活动，大多数都是没有奖项或者二等奖，但是经过多次的坚持，就能获得更好的未来，就像每一位向上的同学，<strong class="text-green-400">只要努力就有收获，只要努力就能变成更好的自己</strong>。
+            </p>
+            <p class="text-justify indent-8">
+              希望大家能投我一票。谢谢大家。
+            </p>
+            <div class="text-right pt-6">
+              <p class="text-xl font-bold gradient-text">王一然</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 作品链接 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold gradient-text mb-8 text-center">我的作品</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/" class="tech-card hover:scale-105 transition-transform text-center">
+            <div class="text-5xl mb-4">🌐</div>
+            <h3 class="text-xl font-bold text-cyan-400 mb-2">个人简历网站</h3>
+            <p class="text-gray-400 text-sm">基于AI编程开发</p>
+          </a>
+          <a href="/poems" class="tech-card hover:scale-105 transition-transform text-center">
+            <div class="text-5xl mb-4">📝</div>
+            <h3 class="text-xl font-bold text-purple-400 mb-2">个人诗集网站</h3>
+            <p class="text-gray-400 text-sm">基于AI编程开发</p>
+          </a>
+          <a href="https://lako.top" target="_blank" rel="noopener noreferrer" class="tech-card hover:scale-105 transition-transform text-center">
+            <div class="text-5xl mb-4">🎮</div>
+            <h3 class="text-xl font-bold text-green-400 mb-2">植物大战僵尸</h3>
+            <p class="text-gray-400 text-sm">基于AI编程开发</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="tech-card text-center space-y-6" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));">
+          <h2 class="text-3xl font-bold gradient-text">想了解更多？</h2>
+          <p class="text-gray-300">查看我的荣誉奖项、诗歌作品和学业成绩</p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/awards" class="tech-button">
+              <span class="relative z-10">荣誉奖项</span>
+            </a>
+            <a href="/poems" class="tech-button" style="background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);">
+              <span class="relative z-10">诗歌作品</span>
+            </a>
+            <a href="/academic" class="tech-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <span class="relative z-10">学业成绩</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+

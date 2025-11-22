@@ -1,5 +1,137 @@
-<footer class="max-w-4xl mx-auto mt-12">
-  <a href="https://docs.netlify.com/frameworks/astro/" class="text-base underline">
-    Astro on Netlify
-  </a>
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative mt-20 border-t border-cyan-500/20" style="background: rgba(10, 14, 39, 0.95);">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <!-- 关于部分 -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-lg font-bold">
+            王
+          </div>
+          <h3 class="text-xl font-bold gradient-text">王一然</h3>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          永泰小学（十一集团校）五年级学生<br>
+          叶圣陶杯作文大赛全国一等奖获得者<br>
+          热爱文学、编程与科学探索
+        </p>
+      </div>
+      
+      <!-- 快速链接 -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-cyan-400">快速导航</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+              <span>→</span>
+              <span>首页</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+              <span>→</span>
+              <span>关于我</span>
+            </a>
+          </li>
+          <li>
+            <a href="/awards" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+              <span>→</span>
+              <span>荣誉奖项</span>
+            </a>
+          </li>
+          <li>
+            <a href="/poems" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+              <span>→</span>
+              <span>诗歌作品</span>
+            </a>
+          </li>
+          <li>
+            <a href="/projects" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+              <span>→</span>
+              <span>作品展示</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 联系信息 -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold text-cyan-400">个人信息</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li class="flex items-center space-x-2">
+            <span class="text-cyan-400">🏫</span>
+            <span>永泰小学（十一集团校）</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-cyan-400">📚</span>
+            <span>五年级四班</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-cyan-400">🎖️</span>
+            <span>班级旗手</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <span class="text-cyan-400">💻</span>
+            <a href="https://lako.top" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">
+              游戏作品：lako.top
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 分割线 -->
+    <div class="tech-divider"></div>
+    
+    <!-- 版权信息 -->
+    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <p class="text-gray-500 text-sm">
+        © {currentYear} 王一然. 保留所有权利
+      </p>
+      <div class="flex items-center space-x-4 text-sm text-gray-500">
+        <span class="flex items-center space-x-1">
+          <span>⚡</span>
+          <span>Powered by Astro</span>
+        </span>
+        <span class="flex items-center space-x-1">
+          <span>🚀</span>
+          <span>Deployed on Netlify</span>
+        </span>
+      </div>
+    </div>
+    
+    <!-- 装饰性元素 -->
+    <div class="absolute top-0 left-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10"></div>
+  </div>
 </footer>
+
+<style>
+  footer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: lineGlow 3s ease-in-out infinite;
+  }
+  
+  @keyframes lineGlow {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>

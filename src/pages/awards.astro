@@ -1,0 +1,397 @@
+---
+import Layout from '../components/Layout.astro';
+
+// 奖项数据
+const awards = [
+  {
+    category: '国家级',
+    color: 'from-red-500 to-orange-500',
+    textColor: 'text-red-400',
+    items: [
+      {
+        title: '叶圣陶杯华人青少年作文大赛',
+        level: '一等奖',
+        date: '2025年1月',
+        image: '/images/awards/国家级-一等奖-叶圣陶作文-2025年1月.png',
+        highlight: true
+      },
+      {
+        title: '叶圣陶杯华人青少年作文大赛',
+        level: '一等奖',
+        date: '2024年1月',
+        image: '/images/awards/国家级-一等奖-叶圣陶作文-2024年1月.png',
+        highlight: true
+      },
+      {
+        title: '叶圣陶杯华人青少年作文大赛',
+        level: '二等奖',
+        date: '2023年8月',
+        image: '/images/awards/国家级-二等奖-叶圣陶作文-2023年8月.png'
+      },
+      {
+        title: '全国青少年人工智能挑战赛',
+        level: '铜奖',
+        subtitle: '机器人工程设计专项赛',
+        date: '2023年10月',
+        image: '/images/awards/国家级-铜奖-全国青少年人工智能创新赛-2023年10月.png'
+      },
+      {
+        title: '第七届华夏武状元少年英雄争霸赛',
+        level: '第二名',
+        subtitle: '男子少儿丙组',
+        date: '2023年4月',
+        image: '/images/awards/国家级-少儿武术运动水平等级达标赛-第二名-2023年4月.jpg'
+      },
+      {
+        title: '少儿武术运动水平等级达标赛',
+        level: '最佳运动员',
+        date: '2023年4月',
+        image: '/images/awards/国家级-少儿武术运动水平等级达标赛-最佳运动员-2023年4月.jpg'
+      }
+    ]
+  },
+  {
+    category: '省部级',
+    color: 'from-blue-500 to-cyan-500',
+    textColor: 'text-blue-400',
+    items: [
+      {
+        title: '韶华杯青少年美育征文',
+        level: '二等奖',
+        subtitle: '小学高年级组',
+        date: '2025年1月14日',
+        image: '/images/awards/省部级-二等奖-韶华杯青少年作文-2025年1月14日.png'
+      },
+      {
+        title: '中华儿童文化艺术促进会社会实践证书',
+        level: '奖励',
+        date: '2025年1月14日',
+        image: '/images/awards/省部级-奖励-中华儿童文化艺术促进会社会时间证书2025年1月14日.png'
+      },
+      {
+        title: '叶圣陶杯华人青少年作文大赛（北京市）',
+        level: '二等奖',
+        date: '2023年12月',
+        image: '/images/awards/省部级-二等奖-叶圣陶作文-2023年12月.png'
+      },
+      {
+        title: '北京市青少年人工智能创新赛',
+        level: '二等奖',
+        date: '2023年9月',
+        image: '/images/awards/省部级-二等奖-北京市青少年人工智能创新赛-2023年9月.png'
+      },
+      {
+        title: '叶圣陶杯华人青少年作文大赛（北京市）',
+        level: '二等奖',
+        date: '2023年6月',
+        image: '/images/awards/省部级-二等奖-叶圣陶作文-2023年6月.png'
+      }
+    ]
+  },
+  {
+    category: '校级',
+    color: 'from-green-500 to-emerald-500',
+    textColor: 'text-green-400',
+    items: [
+      {
+        title: '探寻生态智慧 畅享科技之旅',
+        level: '研究小达人',
+        subtitle: '研学活动',
+        date: '2024年12月',
+        image: '/images/awards/校级-奖励-永泰小学研究小达人-2024年12月.png'
+      },
+      {
+        title: '永泰小学',
+        level: '文明之星',
+        date: '2024年7月',
+        image: '/images/awards/校级-奖励-永泰小学文明之星-2024年7月.png'
+      },
+      {
+        title: '永泰小学',
+        level: '朗读之星',
+        date: '2024年1月',
+        image: '/images/awards/校级-奖励-永泰小学朗读之星-2024年1月.png'
+      },
+      {
+        title: '永泰小学',
+        level: '朗读之星',
+        date: '2023年7月',
+        image: '/images/awards/校级-奖励-永泰小学朗读之星-2023年7月.png'
+      }
+    ]
+  }
+];
+
+// 统计数据
+const stats = {
+  total: awards.reduce((acc, cat) => acc + cat.items.length, 0),
+  national: awards[0].items.length,
+  provincial: awards[1].items.length,
+  school: awards[2].items.length
+};
+---
+
+<Layout title="荣誉奖项 - 王一然 | 获奖证书展示">
+  <!-- 页面标题 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16 fade-in">
+        <h1 class="text-5xl md:text-6xl font-bold gradient-text mb-4">荣誉奖项</h1>
+        <p class="text-gray-400 text-lg">Awards & Honors</p>
+        <div class="tech-divider max-w-md mx-auto mt-8"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 统计数据 -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="tech-card">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div class="text-center">
+              <div class="text-5xl md:text-6xl font-bold gradient-text mb-2">{stats.total}</div>
+              <p class="text-gray-400">获奖总数</p>
+            </div>
+            <div class="text-center">
+              <div class="text-5xl md:text-6xl font-bold text-red-400 mb-2">{stats.national}</div>
+              <p class="text-gray-400">国家级</p>
+            </div>
+            <div class="text-center">
+              <div class="text-5xl md:text-6xl font-bold text-blue-400 mb-2">{stats.provincial}</div>
+              <p class="text-gray-400">省部级</p>
+            </div>
+            <div class="text-center">
+              <div class="text-5xl md:text-6xl font-bold text-green-400 mb-2">{stats.school}</div>
+              <p class="text-gray-400">校级</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 奖项展示 -->
+  {awards.map((category, categoryIndex) => (
+    <section class="py-12 relative">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <!-- 类别标题 -->
+          <div class="mb-8 flex items-center justify-center space-x-4">
+            <div class={`w-16 h-1 bg-gradient-to-r ${category.color}`}></div>
+            <h2 class={`text-3xl md:text-4xl font-bold ${category.textColor} flex items-center space-x-3`}>
+              <span>
+                {category.category === '国家级' ? '🏆' : category.category === '省部级' ? '🥈' : '🎖️'}
+              </span>
+              <span>{category.category}奖项</span>
+            </h2>
+            <div class={`w-16 h-1 bg-gradient-to-r ${category.color}`}></div>
+          </div>
+          
+          <!-- 奖项网格 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.items.map((award, index) => (
+              <div 
+                class={`tech-card group cursor-pointer hover:scale-105 transition-all duration-300 ${award.highlight ? 'ring-2 ring-cyan-500' : ''}`}
+                style={`animation-delay: ${index * 0.1}s`}
+              >
+                <!-- 证书图片 -->
+                <div class="relative overflow-hidden rounded-lg mb-4 image-hover">
+                  <img 
+                    src={award.image} 
+                    alt={`${award.title} - ${award.level}`}
+                    class="w-full h-64 object-cover"
+                    loading="lazy"
+                  />
+                  {award.highlight && (
+                    <div class="absolute top-2 right-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg">
+                      ⭐ 重点奖项
+                    </div>
+                  )}
+                </div>
+                
+                <!-- 奖项信息 -->
+                <div class="space-y-2">
+                  <h3 class={`text-lg font-bold ${category.textColor}`}>
+                    {award.title}
+                  </h3>
+                  {award.subtitle && (
+                    <p class="text-sm text-gray-400">{award.subtitle}</p>
+                  )}
+                  <div class="flex items-center justify-between">
+                    <span class={`tech-tag bg-gradient-to-r ${category.color} bg-opacity-20 border-0`}>
+                      {award.level}
+                    </span>
+                    <span class="text-sm text-gray-400">{award.date}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+  
+  <!-- 时间线展示 -->
+  <section class="py-20 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-12 text-center">获奖时间线</h2>
+        <div class="space-y-8">
+          <!-- 2025年 -->
+          <div class="tech-card">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-xl font-bold">
+                2025
+              </div>
+              <h3 class="text-2xl font-bold gradient-text">持续突破</h3>
+            </div>
+            <ul class="space-y-2 pl-20 text-gray-300">
+              <li class="flex items-center space-x-2">
+                <span class="text-cyan-400">•</span>
+                <span>2025.01 获全国"叶圣陶杯"华人青少年作文大赛小学组<strong class="text-cyan-400">一等奖</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-cyan-400">•</span>
+                <span>2025.01 获北京市"韶华杯"青少年美育征文小学高年级组<strong class="text-blue-400">二等奖</strong></span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 2024年 -->
+          <div class="tech-card">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center text-xl font-bold">
+                2024
+              </div>
+              <h3 class="text-2xl font-bold gradient-text">全面发展</h3>
+            </div>
+            <ul class="space-y-2 pl-20 text-gray-300">
+              <li class="flex items-center space-x-2">
+                <span class="text-purple-400">•</span>
+                <span>2024.12 获永泰小学"探寻生态智慧 畅享科技之旅"研学活动<strong class="text-green-400">"研究小达人"</strong>称号</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-purple-400">•</span>
+                <span>2024.07 荣获永泰小学<strong class="text-green-400">"文明之星"</strong>称号</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-purple-400">•</span>
+                <span>2024.01 荣获永泰小学<strong class="text-green-400">"朗读之星"</strong>称号</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-purple-400">•</span>
+                <span>2024.01 获全国"叶圣陶杯"华人青少年作文大赛小学组<strong class="text-cyan-400">一等奖</strong></span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 2023年 -->
+          <div class="tech-card">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-xl font-bold">
+                2023
+              </div>
+              <h3 class="text-2xl font-bold gradient-text">收获满满</h3>
+            </div>
+            <ul class="space-y-2 pl-20 text-gray-300">
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.12 获北京市"叶圣陶杯"华人青少年作文大赛小学组<strong class="text-blue-400">二等奖</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.10 获全国青少年人工智能挑战赛<strong class="text-yellow-400">铜奖</strong>，赛项"机器人工程设计专项赛"</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.09 获北京市青少年人工智能创新赛<strong class="text-blue-400">二等奖</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.08 获全国"叶圣陶杯"华人青少年作文大赛小学组<strong class="text-yellow-400">二等奖</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.07 荣获永泰小学<strong class="text-green-400">"朗读之星"</strong>称号</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.06 获北京市"叶圣陶杯"华人青少年作文大赛小学组<strong class="text-blue-400">二等奖</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.04 获全国第七届华夏武状元少年英雄争霸赛 男子少儿丙组<strong class="text-red-400">第二名</strong></span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span class="text-green-400">•</span>
+                <span>2023.04 获全国少儿武术运动水平等级达标赛<strong class="text-red-400">"最佳运动员"</strong>称号</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="py-12 relative">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="tech-card text-center space-y-6" style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 136, 0.1));">
+          <h2 class="text-3xl font-bold gradient-text">探索更多</h2>
+          <p class="text-gray-300">查看我的其他精彩内容</p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/poems" class="tech-button">
+              <span class="relative z-10">诗歌作品</span>
+            </a>
+            <a href="/academic" class="tech-button" style="background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);">
+              <span class="relative z-10">学业成绩</span>
+            </a>
+            <a href="/about" class="tech-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+              <span class="relative z-10">关于我</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* 图片放大预览效果 */
+  .image-hover {
+    cursor: zoom-in;
+  }
+</style>
+
+<script>
+  // 图片点击放大效果
+  document.querySelectorAll('.image-hover img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      const target = e.target as HTMLImageElement;
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4';
+      modal.innerHTML = `
+        <div class="relative max-w-5xl w-full">
+          <img src="${target.src}" alt="${target.alt}" class="w-full h-auto rounded-lg shadow-2xl">
+          <button class="absolute top-4 right-4 w-12 h-12 rounded-full bg-red-500 text-white text-2xl hover:bg-red-600 transition-colors">
+            ×
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || (e.target as HTMLElement).tagName === 'BUTTON') {
+          document.body.removeChild(modal);
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+</script>
+

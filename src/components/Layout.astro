@@ -1,27 +1,161 @@
 ---
-import "../../src/styles/globals.css";
-import Footer from "./Footer.astro";
-import Header from "./Header.astro";
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '../styles/globals.css';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = '王一然个人网站 - 永泰小学五年级学生，叶圣陶杯作文大赛全国一等奖获得者' } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-  </head>
-  <body class="px-4 antialiased bg-neutral-800 sm:px-8 text-white">
-    <Header />
-    <main class="w-full max-w-4xl mx-auto grow">
-      <slot />
-    </main>
-    <Footer />
-  </body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <meta name="keywords" content="王一然,个人网站,学生作品,诗歌,编程,AI开发,叶圣陶杯">
+  <meta name="author" content="王一然">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content={title}>
+  <meta property="twitter:description" content={description}>
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <title>{title}</title>
+</head>
+<body>
+  <!-- 动画背景 -->
+  <div class="animated-bg"></div>
+  
+  <!-- 粒子效果 -->
+  <canvas id="particles" class="particles"></canvas>
+  
+  <!-- 主要内容 -->
+  <Header />
+  
+  <main class="min-h-screen">
+    <slot />
+  </main>
+  
+  <Footer />
+  
+  <!-- 粒子效果脚本 -->
+  <script>
+    const canvas = document.getElementById('particles') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+    
+    if (ctx) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      interface Particle {
+        x: number;
+        y: number;
+        size: number;
+        speedX: number;
+        speedY: number;
+        opacity: number;
+      }
+      
+      const particles: Particle[] = [];
+      const particleCount = 80;
+      
+      // 创建粒子
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          opacity: Math.random() * 0.5 + 0.2
+        });
+      }
+      
+      // 动画循环
+      function animate() {
+        if (!ctx) return;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach((particle, index) => {
+          // 更新位置
+          particle.x += particle.speedX;
+          particle.y += particle.speedY;
+          
+          // 边界检查
+          if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+          if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+          
+          // 绘制粒子
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 212, 255, ${particle.opacity})`;
+          ctx.fill();
+          
+          // 连接附近的粒子
+          particles.forEach((otherParticle, otherIndex) => {
+            if (index === otherIndex) return;
+            
+            const dx = particle.x - otherParticle.x;
+            const dy = particle.y - otherParticle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 150) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 * (1 - distance / 150)})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(particle.x, particle.y);
+              ctx.lineTo(otherParticle.x, otherParticle.y);
+              ctx.stroke();
+            }
+          });
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+      
+      // 窗口大小调整
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    }
+  </script>
+  
+  <!-- 平滑滚动和页面动画 -->
+  <script>
+    // 为所有动画元素添加观察器
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    // 观察所有需要动画的元素
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.tech-card, .neon-text, .gradient-text');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
 </html>
